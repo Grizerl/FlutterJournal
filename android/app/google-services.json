@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "70510800450",
+    "project_id": "flutterjournal-25c54",
+    "storage_bucket": "flutterjournal-25c54.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70510800450:android:dfd01fbd26a6655f9b07db",
+        "android_client_info": {
+          "package_name": "com.example.flutter_journal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAflq-4VrUnzn4plA--ZtcC5oulL-gtd_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
