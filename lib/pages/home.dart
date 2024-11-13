@@ -317,6 +317,9 @@ class _HomeState extends State<Home> {
                       decoration: const InputDecoration(
                         labelText: 'Subject',
                         labelStyle: TextStyle(color: Colors.white),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.orange),
                         ),
@@ -329,6 +332,9 @@ class _HomeState extends State<Home> {
                       decoration: const InputDecoration(
                         labelText: 'Rating',
                         labelStyle: TextStyle(color: Colors.white),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.orange),
                         ),
@@ -343,6 +349,9 @@ class _HomeState extends State<Home> {
                       decoration: const InputDecoration(
                         labelText: 'Date',
                         labelStyle: TextStyle(color: Colors.white),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.orange),
                         ),

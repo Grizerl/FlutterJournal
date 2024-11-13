@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_journal/pages/home.dart';
 import 'package:flutter_journal/widgets/sign_in_screen.dart';
 
 void main() async {

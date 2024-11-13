@@ -14,8 +14,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _isPasswordVisible = false;
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -41,14 +41,12 @@ class _SignInScreenState extends State<SignInScreen> {
   Future<void> _signIn() async {
     if (_formKey.currentState!.validate()) {
       try {
-        // Get email and password from controllers
         String email = _emailController.text;
         String password = _passwordController.text;
 
         print('Signing in with email: $email');
         print('Password: $password');
 
-        // Sign in with Firebase Authentication
         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,
           password: password,
@@ -59,13 +57,11 @@ class _SignInScreenState extends State<SignInScreen> {
           DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
 
           if (userDoc.exists) {
-            // User exists in the database
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const Home()),
             );
           } else {
-            // User does not exist in the database
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('User does not exist in the database')),
             );
