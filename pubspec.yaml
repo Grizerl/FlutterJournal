@@ -56,26 +56,19 @@ dev_dependencies:
 flutter_launcher_icons:
     android: "launcher_icon"
     ios: true
-    image_path: "assets/icon/icon.png"
-    min_sdk_android: 23 # android min sdk min:16, default 21
-    web:
-      generate: true
-      image_path: "assets/icon/icon.png"
-      background_color: "#hexcode"
-      theme_color: "#hexcode"
-    windows:
-      generate: true
-      image_path: "assets/icon/icon.png"
-      icon_size: 48 # min:48, max:256, default: 48
-    macos:
-      generate: true
-      image_path: "assets/icon/icon.png"
+    remove_alpha_ios: true
+    image_path: "assets/icon.png"
+    min_sdk_android: 23
+    adaptive_icon_background: "#ffffff"
+    adaptive_icon_foreground: "assets/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/icon.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
