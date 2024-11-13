@@ -149,10 +149,23 @@ class _HomeState extends State<Home> {
                   try {
                     User? user = FirebaseAuth.instance.currentUser;
                     if (user != null) {
+                      // Delete grades before deleting the user account
+                      final gradesSnapshot = await FirebaseFirestore.instance
+                          .collection('grades')
+                          .where('userId', isEqualTo: user.uid)
+                          .get();
+                      for (var gradeDoc in gradesSnapshot.docs) {
+                        await FirebaseFirestore.instance
+                            .collection('grades')
+                            .doc(gradeDoc.id)
+                            .delete();
+                      }
+
+                      // Now delete the user account
                       await FirebaseFirestore.instance.collection('users').doc(user.uid).delete();
                       await user.delete();
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Account Deleted')),
+                        const SnackBar(content: Text('Account and grades deleted')),
                       );
 
                       Navigator.pushReplacement(
@@ -206,6 +219,12 @@ class _HomeState extends State<Home> {
         title: const Text("Grades Overview", style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.orange[900],
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15),
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu_open),
@@ -298,7 +317,7 @@ class _HomeState extends State<Home> {
                       decoration: const InputDecoration(
                         labelText: 'Subject',
                         labelStyle: TextStyle(color: Colors.white),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.orange),
                         ),
                       ),
@@ -310,7 +329,7 @@ class _HomeState extends State<Home> {
                       decoration: const InputDecoration(
                         labelText: 'Rating',
                         labelStyle: TextStyle(color: Colors.white),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.orange),
                         ),
                       ),
@@ -324,7 +343,7 @@ class _HomeState extends State<Home> {
                       decoration: const InputDecoration(
                         labelText: 'Date',
                         labelStyle: TextStyle(color: Colors.white),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.orange),
                         ),
                       ),
